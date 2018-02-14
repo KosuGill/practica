@@ -45,7 +45,8 @@ public class PokemonMain {
 		//pokemon.get(posicion).entrenar();
 		
 		Pokemon pokemon1 = pokemon.get(posicion);//
-	
+		
+		System.out.println(pokemon.equals(pokemon1));
 		System.out.print(pokemon.contains(pokemon1));
 	}
 	
