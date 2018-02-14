@@ -42,14 +42,14 @@ public class PokemonMain {
 		ganas = teclado.nextInt();
 		pokemon.get(posicion).entrenar2(ganas);*/
 		
-		//pokemon.get(posicion).entrenar();
-		
 		Pokemon pokemon1 = pokemon.get(posicion);//
-		
-		System.out.println(pokemon.equals(pokemon1));
-		System.out.print(pokemon.contains(pokemon1));
+			
+		if (pokemon.contains(pokemon1) == true) {
+			pokemon.get(posicion).entrenar();
+		}
 	}
 	
+	//Combaten 2 pokemon pero pasandoles un arraylist
 	public static void Combatir1 (ArrayList <Pokemon> pokemon) {
 		
 		verPokedex(pokemon);
@@ -61,24 +61,45 @@ public class PokemonMain {
 		System.out.println("Posicion: ");
 		posicion2 = teclado.nextInt();
 		
+		Pokemon objeto1 = pokemon.get(posicion1);
+		Pokemon objeto2 = pokemon.get(posicion2);
 		
-		if (pokemon.get(posicion1).combatir()> pokemon.get(posicion2).combatir()) {
-			System.out.println("Ganador " + pokemon.get(posicion1).combatir());
+		if ((pokemon.contains(objeto1) == true) && (pokemon.contains(objeto2))) {
+			
+			if (pokemon.get(posicion1).combatir()> pokemon.get(posicion2).combatir()) {
+				System.out.println("Ganador " + pokemon.get(posicion1).getNombre() + " " + pokemon.get(posicion1).combatir());
+			} else {
+				System.out.println("Ganador " + pokemon.get(posicion2).getNombre() + " " + pokemon.get(posicion2).combatir());
+
+			}
+				
+		}
+		
+	}
+	
+	//Combaten pasandose los dos objetos
+	public static void Combatir (Pokemon pokeA, Pokemon pokeB) {
+		
+		if (pokeA.combatir() > pokeB.combatir()) {
+			
+			System.out.println("Ganador " + pokeA.getNombre() + " " + pokeA.combatir() + " / " + pokeA.nivel());
+			
 		} else {
-			System.out.println("Ganador " + pokemon.get(posicion2).combatir());
+			
+			System.out.println("Ganador " + pokeB.getNombre() + " " + pokeB.combatir() + " / " + pokeB.nivel());
 
 		}
 	}
 	
-	public static void Combatir (Pokemon pokeA, Pokemon pokeB) {
+	public static boolean existo (Pokemon poke, ArrayList <Pokemon> pokemon) {
+		boolean si = false;
 		
-		if (pokeA.combatir() > pokeB.combatir()) {
-			System.out.println("Ganador " + pokeA.combatir() + " / " + pokeA.nivel());
-		} else {
-			System.out.println("Ganador " + pokeB.combatir() + " / " + pokeB.nivel());
-
+		if (pokemon.contains(poke) == true) {
+			si = true;
 		}
+		return si;
 	}
+	
 	
 	public static void opcionesMenu () {
 		System.out.println(" 1. Encontrar pokemon nuevo \n 2. Entrenar \n 3. Combatir \n 4. Ver pokedex \n 5. Salir \n");
@@ -96,15 +117,7 @@ public class PokemonMain {
 		
 		Scanner teclado = new Scanner(System.in);
 		
-		//
-		encontrarPokemon(pokemon);
-		encontrarPokemon(pokemon);
-		verPokedex(pokemon);
-		entrenarPokemon(pokemon);
-		
-		
-		
-		/*while (controlaMenu == false ) {
+		while (controlaMenu == false ) {
 			
 			opcionesMenu();
 			
@@ -148,7 +161,6 @@ public class PokemonMain {
 				//Bucle para que se puedan entrenar mas pokemon dentro de la opcion
 				while (controlaSubMenu==false) {
 					
-					controlaSubMenu=false;//Resetar el valor para cuando se quiera entrenar otro pokemon desde el menu principal
 					
 					System.out.println("¿Quiere entrenar otro pokemon? (Y/N)");
 					System.out.print("Opcion:");
@@ -179,8 +191,12 @@ public class PokemonMain {
 				System.out.println("Elegir al otro pokemon que va a luchar ");
 				posicion2 = teclado.nextInt();
 				
-				Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+				Pokemon objeto1 = pokemon.get(posicion1);
+				Pokemon objeto2 = pokemon.get(posicion2);
 				
+				if ((existo(objeto1, pokemon) == true) && (existo (objeto2, pokemon) == true)) {
+					Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+				}
 				
 				
 				controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
@@ -209,11 +225,15 @@ public class PokemonMain {
 						System.out.println("Elegir al otro pokemon que va a luchar ");
 						posicion2 = teclado.nextInt();
 						
-						Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+						Pokemon objeto3 = pokemon.get(posicion1);
+						Pokemon objeto4 = pokemon.get(posicion2);
+						
+						if ((existo(objeto3, pokemon) == true) && (existo (objeto3, pokemon) == true)) {
+							Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+						}
 						
 					}
 				}
-				
 				
 				break;
 				
@@ -233,7 +253,7 @@ public class PokemonMain {
 				System.out.println("Esa opcion no existe en el menu");
 				break;
 			}
-		}*/
+		}
 		
 		
 		
