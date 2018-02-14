@@ -38,13 +38,15 @@ public class PokemonMain {
 		System.out.println("Posicion: ");
 		posicion = teclado.nextInt();
 		
-		/*System.out.println("Ganas: ");
+		/*System.out.println("Ganas: "); OTRA FORMA (PASANDOLE LAS GANAS)
 		ganas = teclado.nextInt();
 		pokemon.get(posicion).entrenar2(ganas);*/
 		
-		pokemon.get(posicion).entrenar();
-	
+		//pokemon.get(posicion).entrenar();
 		
+		Pokemon pokemon1 = pokemon.get(posicion);//
+	
+		System.out.print(pokemon.contains(pokemon1));
 	}
 	
 	public static void Combatir1 (ArrayList <Pokemon> pokemon) {
@@ -93,7 +95,15 @@ public class PokemonMain {
 		
 		Scanner teclado = new Scanner(System.in);
 		
-		while (controlaMenu == false ) {
+		//
+		encontrarPokemon(pokemon);
+		encontrarPokemon(pokemon);
+		verPokedex(pokemon);
+		entrenarPokemon(pokemon);
+		
+		
+		
+		/*while (controlaMenu == false ) {
 			
 			opcionesMenu();
 			
@@ -222,17 +232,9 @@ public class PokemonMain {
 				System.out.println("Esa opcion no existe en el menu");
 				break;
 			}
-		}
+		}*/
 		
 		
-		
-		//Pokemon objeto = new Pokemon (0);
-		//objeto.entreno(1);
-		
-		//verPokedex(pokemon);
-		
-		
-		//Combatir1(pokemon);
 		
 		
 		

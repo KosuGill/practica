@@ -75,5 +75,19 @@ public class Pokemon {
 		return nivel;
 	}
 	
+	public boolean equals (Object objeto) {
+		
+		boolean igual= false;
+		
+		if (objeto instanceof Pokemon) {
+			Pokemon pokiman = (Pokemon) objeto;
+			if (pokiman.getNombre().equals(this.getNombre()) && (pokiman.combatir().equals(this.combatir()))) {
+				igual = true;
+			}
+		}
+		
+		return igual;
+	}
+	
 
 }
