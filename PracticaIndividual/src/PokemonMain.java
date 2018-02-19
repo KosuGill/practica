@@ -30,7 +30,7 @@ public class PokemonMain {
 		}
 	}
 	
-	public static void entrenarPokemon (ArrayList <Pokemon> pokemon) {
+	public static void entrenarPokemon (ArrayList <Pokemon> pokemon) throws ArrayIndexOutOfBoundsException {
 		
 		int ganas, posicion;
 		Scanner teclado = new Scanner(System.in);
@@ -41,12 +41,13 @@ public class PokemonMain {
 		/*System.out.println("Ganas: "); OTRA FORMA (PASANDOLE LAS GANAS)
 		ganas = teclado.nextInt();
 		pokemon.get(posicion).entrenar2(ganas);*/
-		
-		Pokemon pokemon1 = pokemon.get(posicion);//
 			
-		if (pokemon.contains(pokemon1) == true) {
-			pokemon.get(posicion).entrenar();
-		}
+		if (posicion < 0 || posicion >= pokemon.size()) {
+			throw new ArrayIndexOutOfBoundsException("El pokemon no existe");
+		} 
+		Pokemon pokemon1 = pokemon.get(posicion);
+		pokemon.get(posicion).entrenar();
+	
 	}
 	
 	//Combaten 2 pokemon pero pasandoles un arraylist
@@ -77,7 +78,7 @@ public class PokemonMain {
 		
 	}
 	
-	//Combaten pasandose los dos objetos
+	//Combate pokemon pasando dos objetos
 	public static void Combatir (Pokemon pokeA, Pokemon pokeB) {
 		
 		if (pokeA.combatir() > pokeB.combatir()) {
@@ -154,7 +155,13 @@ public class PokemonMain {
 				
 				verPokedex(pokemon); //Ver la lista de pokemon y sus posiciones para elegir cual entrenar
 				
-				entrenarPokemon(pokemon);//Metodo de entrenar el pokemon
+				
+				try {
+					entrenarPokemon(pokemon);
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
+				
 				
 				controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
 				
@@ -170,7 +177,11 @@ public class PokemonMain {
 					if (opcionSubMenu=='n' || opcionSubMenu=='N') {
 						controlaSubMenu=true;
 					} else {
-						entrenarPokemon(pokemon);
+						try {
+							entrenarPokemon(pokemon);
+						} catch (Exception ex) {
+							ex.getMessage();
+						}
 					}
 				}
 				
