@@ -6,6 +6,7 @@ public class Pokemon {
 	
 	private String nombre;
 	private Double fuerza;
+	private Double precision;
 	
 	//Constructores
 	

@@ -52,21 +52,15 @@ public class PokemonMain {
 		pokemon.get(posicion).entrenar2(ganas);*/
 			
 		if (posicion < 0 || posicion >= pokemon.size()) {
-			throw new ArrayIndexOutOfBoundsException("El pokemon no existe");
-<<<<<<< HEAD
-		} else {
+			throw new ArrayIndexOutOfBoundsException("El pokemon no existe\n");
+
+		} else {//Si no se lanza la excepcion se asignan los datos del pokemon al objeto y se entrena
 			Pokemon pokemon1 = pokemon.get(posicion);
 			pokemon.get(posicion).entrenar();
 		}
-=======
-		} 
+
+	} 
 		
-		//Si no se lanza la excepcion se asignan los datos del pokemon al objeto y se entrena
-		Pokemon pokemon1 = pokemon.get(posicion);
-		pokemon.get(posicion).entrenar();
-	
->>>>>>> 5ea858cc32302c7f102687527d2f8ae02ee7fc51
-	}
 	
 	//Combaten 2 pokemon pero pasandoles un arraylist
 	public static void Combatir1 (ArrayList <Pokemon> pokemon) {
@@ -220,7 +214,7 @@ public class PokemonMain {
 				while (controlaSubMenu==false) {
 					
 					
-					System.out.println("¿Quiere entrenar otro pokemon? (Y/N)");
+					System.out.println("\n¿Quiere entrenar otro pokemon? (Y/N)");
 					System.out.print("Opcion:");
 					opcionSubMenu=teclado.next().charAt(0);
 					
@@ -231,7 +225,7 @@ public class PokemonMain {
 						try {
 							entrenarPokemon(pokemon);
 						} catch (Exception ex) {
-							ex.getMessage();
+							System.out.println(ex.getMessage());
 						}
 					}
 				}
@@ -304,7 +298,7 @@ public class PokemonMain {
 					
 					controlaSubMenu=false;//Resetar el valor para cuando se quiera entrenar otro pokemon desde el menu principal
 					
-					System.out.println("¿Quiere realizar otro combate? (Y/N)");
+					System.out.println("\n¿Quiere realizar otro combate? (Y/N)");
 					System.out.print("Opcion:");
 					opcionSubMenu=teclado.next().charAt(0);
 					
