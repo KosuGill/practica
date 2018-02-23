@@ -44,10 +44,10 @@ public class PokemonMain {
 			
 		if (posicion < 0 || posicion >= pokemon.size()) {
 			throw new ArrayIndexOutOfBoundsException("El pokemon no existe");
-		} 
-		Pokemon pokemon1 = pokemon.get(posicion);
-		pokemon.get(posicion).entrenar();
-	
+		} else {
+			Pokemon pokemon1 = pokemon.get(posicion);
+			pokemon.get(posicion).entrenar();
+		}
 	}
 	
 	//Combaten 2 pokemon pero pasandoles un arraylist
