@@ -26,17 +26,24 @@ public class PokemonMain {
 	}
 	
 	//Recorremos el arraylist de pokemon y los mostramos
-	public static void verPokedex (ArrayList <Pokemon>  pokemon) {
+	public static void verPokedex (ArrayList <Pokemon>  pokemon) throws Exception {
 		
-		Iterator<Pokemon> iteradorListaPokemon = pokemon.iterator();
-		
-		while (iteradorListaPokemon.hasNext()) {
+		if (pokemon.size()==0) {
+			throw new Exception ("No tienes ningun pokemon registrado en la pokedex");
+		} else {
+			
+			Iterator<Pokemon> iteradorListaPokemon = pokemon.iterator();
+			
+			while (iteradorListaPokemon.hasNext()) {
 
-			Pokemon mostrar = iteradorListaPokemon.next();
+				Pokemon mostrar = iteradorListaPokemon.next();
 
-			System.out.println(pokemon.indexOf(mostrar)+ " " + mostrar.getNombre() + " " + mostrar.combatir() + mostrar.nivel());
+				System.out.println(pokemon.indexOf(mostrar)+ " " + mostrar.getNombre() + " " + mostrar.combatir() + mostrar.nivel());
 
+			}
+			
 		}
+		
 	}
 	
 	public static void entrenarPokemon (ArrayList <Pokemon> pokemon) throws ArrayIndexOutOfBoundsException {
@@ -65,7 +72,12 @@ public class PokemonMain {
 	//Combaten 2 pokemon pero pasandoles un arraylist
 	public static void Combatir1 (ArrayList <Pokemon> pokemon) {
 		
-		verPokedex(pokemon);//Mostramos la pokedex
+		//Mostramos la pokedex
+		try {
+			verPokedex(pokemon);
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 		
 		int posicion1, posicion2;
 		Scanner teclado = new Scanner(System.in);
@@ -197,8 +209,14 @@ public class PokemonMain {
 				break;
 				
 			case 2:
-				
-				verPokedex(pokemon); //Ver la lista de pokemon y sus posiciones para elegir cual entrenar
+			
+				 //Ver la lista de pokemon y sus posiciones para elegir cual entrenar
+				try {
+					verPokedex(pokemon);
+					
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
 				
 				//Comprobamos si se genera una excepcion
 				try {
@@ -222,6 +240,13 @@ public class PokemonMain {
 					if (opcionSubMenu=='n' || opcionSubMenu=='N') {
 						controlaSubMenu=true;
 					} else {
+						
+						try {
+							verPokedex(pokemon);
+						} catch (Exception ex) {
+							System.out.println(ex.getMessage());
+						}
+						
 						try {
 							entrenarPokemon(pokemon);
 						} catch (Exception ex) {
@@ -232,7 +257,11 @@ public class PokemonMain {
 				
 				//Mostramos los resultados despues del aumento de nivel
 				System.out.println("Despues del aumento de nivel los stats han quedado asi: ");
-				verPokedex(pokemon);
+				try {
+					verPokedex(pokemon);
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
 				
 				break;
 				
@@ -243,7 +272,13 @@ public class PokemonMain {
 				Pokemon objeto1 = null, objeto2 = null, objeto3 = null, objeto4= null;
 				
 				
-				verPokedex(pokemon); //Ver la lista de pokemon y sus posiciones para elegir cuales combatiran
+				//Ver la lista de pokemon y sus posiciones para elegir cuales combatiran
+				
+				try {
+					verPokedex(pokemon);
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
 				
 				//Entradas
 				System.out.println("Elegir pokemon que va a luchar: ");
@@ -309,7 +344,12 @@ public class PokemonMain {
 						
 					} else {
 						
-						verPokedex(pokemon);
+						//Ver lista de pokemon
+						try {
+							verPokedex(pokemon);
+						} catch (Exception ex) {
+							System.out.println(ex.getMessage());
+						}
 						
 						System.out.println("Elegir pokemon que va a luchar: ");
 						posicion1 = teclado.nextInt();
@@ -354,8 +394,12 @@ public class PokemonMain {
 				break;
 				
 			case 4:
-				
-				verPokedex(pokemon);
+				//Ver los pokemons que tenemos
+				try {
+					verPokedex(pokemon);
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
+				}
 				
 				break;
 				
