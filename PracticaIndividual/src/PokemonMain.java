@@ -211,57 +211,53 @@ public class PokemonMain {
 			case 2:
 			
 				 //Ver la lista de pokemon y sus posiciones para elegir cual entrenar
+				
 				try {
+					
 					verPokedex(pokemon);
 					
-				} catch (Exception ex) {
-					System.out.println(ex.getMessage());
-				}
-				
-				//Comprobamos si se genera una excepcion
-				try {
 					entrenarPokemon(pokemon);
-				} catch (Exception ex) {
-					System.out.println(ex.getMessage());
-				}
-				
-				
-				controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
-				
-				//Bucle para que se puedan entrenar mas pokemon dentro de la opcion
-				while (controlaSubMenu==false) {
 					
+					controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
 					
-					System.out.println("\n¿Quiere entrenar otro pokemon? (Y/N)");
-					System.out.print("Opcion:");
-					opcionSubMenu=teclado.next().charAt(0);
-					
-					//Comprobamos si hemos terminado de entrenar pokemons
-					if (opcionSubMenu=='n' || opcionSubMenu=='N') {
-						controlaSubMenu=true;
-					} else {
+					//Bucle para que se puedan entrenar mas pokemon dentro de la opcion
+					while (controlaSubMenu==false) {
 						
-						try {
-							verPokedex(pokemon);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
 						
-						try {
-							entrenarPokemon(pokemon);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
+						System.out.println("\n¿Quiere entrenar otro pokemon? (Y/N)");
+						System.out.print("Opcion:");
+						opcionSubMenu=teclado.next().charAt(0);
+						
+						//Comprobamos si hemos terminado de entrenar pokemons
+						if (opcionSubMenu=='n' || opcionSubMenu=='N') {
+							controlaSubMenu=true;
+						} else {
+							
+							try {
+								verPokedex(pokemon);
+								entrenarPokemon(pokemon);
+							} catch (Exception ex) {
+								System.out.println(ex.getMessage());
+							}
+							
 						}
 					}
-				}
-				
-				//Mostramos los resultados despues del aumento de nivel
-				System.out.println("Despues del aumento de nivel los stats han quedado asi: ");
-				try {
-					verPokedex(pokemon);
+					
+					//Mostramos los resultados despues del aumento de nivel
+					System.out.println("Despues del aumento de nivel los stats han quedado asi: ");
+					try {
+						verPokedex(pokemon);
+					} catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
+					
+					
 				} catch (Exception ex) {
 					System.out.println(ex.getMessage());
 				}
+				
+				
+				
 				
 				break;
 				
