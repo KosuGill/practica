@@ -134,13 +134,14 @@ public class PokemonMain {
 		
 	}
 	
-	
+	//Mostrar las opciones del menu
 	public static void opcionesMenu () {
 		System.out.println("\n 1. Encontrar pokemon nuevo \n 2. Entrenar \n 3. Combatir \n 4. Ver pokedex \n 5. Salir \n");
 	}
 	
 
 	public static void main(String[] args) {
+		
 		// Variables
 		
 		int opcionMenu;
@@ -148,6 +149,7 @@ public class PokemonMain {
 		char opcionSubMenu;
 		
 		ArrayList <Pokemon> pokemon = new ArrayList <Pokemon>();
+		ArrayList <Ataques> ataques = new ArrayList <Ataques>();
 		
 		Scanner teclado = new Scanner(System.in);
 		

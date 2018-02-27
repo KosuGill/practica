@@ -4,8 +4,10 @@ public class Pokemon {
 	
 	//Variables
 	
-	private String nombre;
-	private Double fuerza;
+	private String nombre, tipo;
+	private Double fuerza, defensa, vida;
+	private Ataques ataquesPokemon;
+	
 	
 	//Constructores
 	
@@ -16,12 +18,14 @@ public class Pokemon {
 			Double valorAleatorioPikachu = Math.random() * (60-30) + 30;
 			this.nombre="Pikachu";
 			this.fuerza=valorAleatorioPikachu;
+			this.tipo="Electrico";
 			
 		}
 		if (huevo == 1) {
 			Double valorAleatorioSquirtle = Math.random() * (50-40) + 40;
 			this.nombre="Squirtle";
 			this.fuerza=valorAleatorioSquirtle;
+			this.tipo="Agua";
 			
 		}
 		
@@ -29,6 +33,10 @@ public class Pokemon {
 			Double valorAleatorioCharmander = Math.random() * (55-45) + 45;
 			this.nombre="Charmander";
 			this.fuerza=valorAleatorioCharmander;
+			this.tipo="Fuego";
+			
+		}
+		if (huevo == 3) {
 			
 		}
 		
