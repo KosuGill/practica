@@ -272,119 +272,120 @@ public class PokemonMain {
 				
 				try {
 					verPokedex(pokemon);
-				} catch (Exception ex) {
-					System.out.println(ex.getMessage());
-				}
-				
-				//Entradas
-				System.out.println("Elegir pokemon que va a luchar: ");
-				posicion1 = teclado.nextInt();
-				System.out.println("Elegir al otro pokemon que va a luchar ");
-				posicion2 = teclado.nextInt();
-				
-				
-				//Comprobamos si el pokemon en esa posicion existe utilizando un metodo
-				try {
 					
-					posicionesMal (posicion1, pokemon);
-					
-				} catch (Exception ex) {
-					
-					System.out.println(ex.getMessage());
-					
-				}
-				
-				//Comprobamos si el pokemon en esa posicion existe utilizando un metodo (Si no se pone el try catch se ejecutan y dan error)
-				try {
-					
-					posicionesMal (posicion2, pokemon);
-					
-				} catch (Exception ex) {
-					System.out.println(ex.getMessage());
-				}
-				
-				//Comprobamos si se pueden asignar los datos a los objetos
-				try {
-					
-					objeto1 = pokemon.get(posicion1);
-					objeto2 = pokemon.get(posicion2);
+					//Entradas
+					System.out.println("Elegir pokemon que va a luchar: ");
+					posicion1 = teclado.nextInt();
+					System.out.println("Elegir al otro pokemon que va a luchar ");
+					posicion2 = teclado.nextInt();
 					
 					
-				} catch (Exception ex) {
-					
-					System.out.println("No se han podido asignar las posiciones de los pokemons a los objetos");
-					
-				}
-				
-				//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal)
-				if ((existo(objeto1, pokemon) == true) && (existo (objeto2, pokemon) == true)) {
-						Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
-					
-				}
-				
-				controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
-				
-				//Bucle para que se puedan hacer mas combates
-				while (controlaSubMenu==false) {
-					
-					controlaSubMenu=false;//Resetar el valor para cuando se quiera entrenar otro pokemon desde el menu principal
-					
-					System.out.println("\n¿Quiere realizar otro combate? (Y/N)");
-					System.out.print("Opcion:");
-					opcionSubMenu=teclado.next().charAt(0);
-					
-					//Preguntar si se se quieren poner a combatir mas pokemon
-					if (opcionSubMenu=='n' || opcionSubMenu=='N') {
+					//Comprobamos si el pokemon en esa posicion existe utilizando un metodo
+					try {
 						
-						controlaSubMenu=true;
+						posicionesMal (posicion1, pokemon);
 						
-					} else {
+					} catch (Exception ex) {
 						
-						//Ver lista de pokemon
-						try {
-							verPokedex(pokemon);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
-						
-						System.out.println("Elegir pokemon que va a luchar: ");
-						posicion1 = teclado.nextInt();
-						
-						System.out.println("Elegir al otro pokemon que va a luchar ");
-						posicion2 = teclado.nextInt();
-						
-						//Comprobamos si el pokemon en esa posicion existe utilizando un metodo
-						try {
-							posicionesMal (posicion1, pokemon);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
-						
-						
-						//Comprobamos si el pokemon en esa posicion existe utilizando un metodo (Si no se pone el try catch se ejecutan y dan error
-						try {
-							posicionesMal (posicion2, pokemon);
-						} catch (Exception ex) {
-							System.out.println(ex.getMessage());
-						}
-						
-						
-						//Comprobamos si se pueden asignar los datos a los objetos
-						try {
-							objeto3 = pokemon.get(posicion1);
-							objeto4 = pokemon.get(posicion2);
-							
-						} catch (Exception ex) {
-							System.out.println("No se han podido asignar las posiciones de los pokemons a los objetos");
-						}
-						
-						
-						//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal
-						if ((existo(objeto3, pokemon) == true) && (existo (objeto4, pokemon) == true)) {
-							Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
-						}
+						System.out.println(ex.getMessage());
 						
 					}
+					
+					//Comprobamos si el pokemon en esa posicion existe utilizando un metodo (Si no se pone el try catch se ejecutan y dan error)
+					try {
+						
+						posicionesMal (posicion2, pokemon);
+						
+					} catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
+					
+					//Comprobamos si se pueden asignar los datos a los objetos
+					try {
+						
+						objeto1 = pokemon.get(posicion1);
+						objeto2 = pokemon.get(posicion2);
+						
+						
+					} catch (Exception ex) {
+						
+						System.out.println("No se han podido asignar las posiciones de los pokemons a los objetos");
+						
+					}
+					
+					//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal)
+					if ((existo(objeto1, pokemon) == true) && (existo (objeto2, pokemon) == true)) {
+							Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+						
+					}
+					
+					controlaSubMenu=false;//Resetear el valor para cuando volvamos a repetir desde el menu principal
+					
+					//Bucle para que se puedan hacer mas combates
+					while (controlaSubMenu==false) {
+						
+						controlaSubMenu=false;//Resetar el valor para cuando se quiera entrenar otro pokemon desde el menu principal
+						
+						System.out.println("\n¿Quiere realizar otro combate? (Y/N)");
+						System.out.print("Opcion:");
+						opcionSubMenu=teclado.next().charAt(0);
+						
+						//Preguntar si se se quieren poner a combatir mas pokemon
+						if (opcionSubMenu=='n' || opcionSubMenu=='N') {
+							
+							controlaSubMenu=true;
+							
+						} else {
+							
+							//Ver lista de pokemon
+							try {
+								verPokedex(pokemon);
+							} catch (Exception ex) {
+								System.out.println(ex.getMessage());
+							}
+							
+							System.out.println("Elegir pokemon que va a luchar: ");
+							posicion1 = teclado.nextInt();
+							
+							System.out.println("Elegir al otro pokemon que va a luchar ");
+							posicion2 = teclado.nextInt();
+							
+							//Comprobamos si el pokemon en esa posicion existe utilizando un metodo
+							try {
+								posicionesMal (posicion1, pokemon);
+							} catch (Exception ex) {
+								System.out.println(ex.getMessage());
+							}
+							
+							
+							//Comprobamos si el pokemon en esa posicion existe utilizando un metodo (Si no se pone el try catch se ejecutan y dan error
+							try {
+								posicionesMal (posicion2, pokemon);
+							} catch (Exception ex) {
+								System.out.println(ex.getMessage());
+							}
+							
+							
+							//Comprobamos si se pueden asignar los datos a los objetos
+							try {
+								objeto3 = pokemon.get(posicion1);
+								objeto4 = pokemon.get(posicion2);
+								
+							} catch (Exception ex) {
+								System.out.println("No se han podido asignar las posiciones de los pokemons a los objetos");
+							}
+							
+							
+							//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal
+							if ((existo(objeto3, pokemon) == true) && (existo (objeto4, pokemon) == true)) {
+								Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
+							}
+							
+						}
+					}
+					
+				} catch (Exception ex) {
+					System.out.println(ex.getMessage());
 				}
 				
 				break;
