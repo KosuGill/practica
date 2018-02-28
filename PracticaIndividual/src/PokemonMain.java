@@ -28,9 +28,12 @@ public class PokemonMain {
 	//Recorremos el arraylist de pokemon y los mostramos
 	public static void verPokedex (ArrayList <Pokemon>  pokemon) throws Exception {
 		
+		//Si el array de pokemon creara una excepcion
 		if (pokemon.size()==0) {
+			
 			throw new Exception ("No tienes ningun pokemon registrado en la pokedex");
-		} else {
+			
+		} else {//Si no esta vacio recorrera el array y mostrara lo que contiene
 			
 			Iterator<Pokemon> iteradorListaPokemon = pokemon.iterator();
 			
@@ -46,6 +49,7 @@ public class PokemonMain {
 		
 	}
 	
+	//Subimos las stats de un pokemon seleccionado usando un metodo de la clase
 	public static void entrenarPokemon (ArrayList <Pokemon> pokemon) throws ArrayIndexOutOfBoundsException {
 		
 		int ganas, posicion;
@@ -81,11 +85,14 @@ public class PokemonMain {
 		
 		int posicion1, posicion2;
 		Scanner teclado = new Scanner(System.in);
+		
 		System.out.println("Elegir pokemon: ");
 		posicion1 = teclado.nextInt();
+		
 		System.out.println("Posicion: ");
 		posicion2 = teclado.nextInt();
 		
+		//Cogemos los dos pokemons selecionados
 		Pokemon objeto1 = pokemon.get(posicion1);
 		Pokemon objeto2 = pokemon.get(posicion2);
 		
@@ -112,7 +119,7 @@ public class PokemonMain {
 		
 		if (pokeA.combatir() > pokeB.combatir()) {//Comparamos cual tiene mayor fuerza
 			
-			System.out.println("El ganador es " + pokeA.getNombre() + " con una fuerza de" + pokeA.combatir() + " y un nivel de " + pokeA.nivel());
+			System.out.println("El ganador es " + pokeA.getNombre() + " con una fuerza de " + pokeA.combatir() + " y un nivel de " + pokeA.nivel());
 			
 		} else {
 			
@@ -171,6 +178,7 @@ public class PokemonMain {
 			opcionMenu = teclado.nextInt();
 			switch (opcionMenu) {//Opcion del menu
 			
+			//Encontrar pokemon
 			case 1:
 				
 				try {
@@ -207,7 +215,8 @@ public class PokemonMain {
 				}
 				
 				break;
-				
+			
+			//Entrenar pokemons
 			case 2:
 			
 				 //Ver la lista de pokemon y sus posiciones para elegir cual entrenar
@@ -260,7 +269,8 @@ public class PokemonMain {
 				
 				
 				break;
-				
+			
+			//Combatir pokemon
 			case 3:
 				
 				//Variables
@@ -376,7 +386,7 @@ public class PokemonMain {
 							}
 							
 							
-							//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal
+							//Comprobamos si los pokemon en esa posicion existe utilizando un metodo (Si no se pone la condicion se ejecuta por error cuando alguno de los pokemon esta mal)
 							if ((existo(objeto3, pokemon) == true) && (existo (objeto4, pokemon) == true)) {
 								Combatir(pokemon.get(posicion1), pokemon.get(posicion2));
 							}
@@ -385,13 +395,16 @@ public class PokemonMain {
 					}
 					
 				} catch (Exception ex) {
+					
 					System.out.println(ex.getMessage());
+					
 				}
 				
 				break;
-				
+			
+			//Ver los pokemons que tenemos
 			case 4:
-				//Ver los pokemons que tenemos
+				
 				try {
 					verPokedex(pokemon);
 				} catch (Exception ex) {
@@ -400,6 +413,7 @@ public class PokemonMain {
 				
 				break;
 				
+			//Salir del menu
 			case 5:
 				
 				controlaMenu=true;
